@@ -2,35 +2,35 @@
 {
     using System.Linq;
 
-    using ComputerFactory.Data.Models;
+    using ComputerFactory.Models.MongoDb;
 
     using MongoDB.Bson;
     using MongoDB.Driver;
     using MongoDB.Driver.Builders;
     using MongoDB.Driver.Linq;
 
-    public abstract class MongoRepository<T> : IRepository<T> where T : IMongoEntity
+    public class MongoRepository<T> : IRepository<T> where T : IMongoEntity
     {
         protected MongoCollection<T> table;
 
-        protected MongoRepository(MongoDatabase db)
+        public MongoRepository(IComputerFactoryMongoDbContext dataContext)
         {
-            this.table = db.GetCollection<T>(typeof(T).Name.ToLower() + "s");
+            this.table = dataContext.Database.GetCollection<T>(typeof(T).Name.ToLower() + "s");
         }
 
-        public virtual void Create(T entity)
+        public virtual void Add(T entity)
         {
             this.table.Save(entity);
         }
 
-        public virtual void Delete(string id)
+        public virtual void Delete(T entity)
         {
-            this.table.Remove(Query<T>.EQ(x => x.Id, new ObjectId(id)), RemoveFlags.None, WriteConcern.Acknowledged);
+            this.table.Remove(Query<T>.EQ(x => x.Id, new ObjectId(entity.Id.ToString())), RemoveFlags.None, WriteConcern.Acknowledged);
         }
 
-        public virtual T GetById(string id)
+        public virtual T GetById(int id)
         {
-            var entityQuery = Query<T>.EQ(x => x.Id, new ObjectId(id));
+            var entityQuery = Query<T>.EQ(x => x.Id, new ObjectId(id.ToString()));
             return this.table.FindOne(entityQuery);
         }
 

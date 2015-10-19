@@ -1,12 +1,12 @@
-﻿namespace ComputerFactory.Data.Models
+﻿namespace ComputerFactory.Models.MongoDb
 {
     using MongoDB.Bson;
 
-    public class Ram : MongoEntity
+    public class Cpu : MongoEntity
     {
         public string Model { get; set; }
 
-        public int Size { get; set; }
+        public int Cores { get; set; }
 
         public ObjectId VendorId { get; set; }
 

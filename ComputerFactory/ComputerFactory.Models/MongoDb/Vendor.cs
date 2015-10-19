@@ -1,4 +1,4 @@
-﻿namespace ComputerFactory.Data.Models
+﻿namespace ComputerFactory.Models.MongoDb
 {
     public class Vendor : MongoEntity
     {

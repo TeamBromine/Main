@@ -4,11 +4,11 @@
 
     public interface IRepository<T>
     {
-        void Create(T entity);
+        void Add(T entity);
 
-        void Delete(string id);
+        void Delete(T entity);
 
-        T GetById(string id);
+        T GetById(int id);
 
         IQueryable<T> GetAll();
     }

@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>..\packages\MongoDB.Bson.2.0.1\lib\net45\MongoDB.Bson.dll</HintPath>
     </Reference>
@@ -43,6 +49,7 @@
       <HintPath>..\packages\mongocsharpdriver.2.0.1\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,25 +58,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Computer.cs" />
-    <Compile Include="Models\Cpu.cs" />
-    <Compile Include="Models\IMongoEntity.cs" />
-    <Compile Include="Models\MongoEntity.cs" />
-    <Compile Include="Models\Motherboard.cs" />
-    <Compile Include="Models\Psu.cs" />
-    <Compile Include="Models\Ram.cs" />
-    <Compile Include="Models\Vendor.cs" />
+    <Compile Include="ComputerFactoryMongoDbContext.cs" />
+    <Compile Include="ComputerFactorySqlDbContext.cs" />
+    <Compile Include="IComputerFactoryMongoDbContext.cs" />
+    <Compile Include="Importers\IDataImporter.cs" />
+    <Compile Include="Importers\MongoImporter.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Movers\IDataMover.cs" />
+    <Compile Include="Movers\MongoDbToSqlServerMover.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\ComputerRepository.cs" />
-    <Compile Include="Repositories\CpuRepository.cs" />
+    <Compile Include="Repositories\EfRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\MongoRepository.cs" />
-    <Compile Include="Repositories\MotherboardRepository.cs" />
-    <Compile Include="Repositories\PsuRepository.cs" />
-    <Compile Include="Repositories\RamRepository.cs" />
-    <Compile Include="Repositories\VendorRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +80,14 @@
       <Project>{0c9d4880-23d9-4196-be0d-8bb9b45dd9b1}</Project>
       <Name>ComputerFactory.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ComputerFactory.Models\ComputerFactory.Models.csproj">
+      <Project>{7b5d8123-5fdd-4ffe-a104-c2efc068b5f8}</Project>
+      <Name>ComputerFactory.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Json\" />
+    <Folder Include="Xml\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

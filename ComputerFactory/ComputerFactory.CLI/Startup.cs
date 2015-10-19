@@ -2,41 +2,25 @@
 {
     using System;
     using System.Linq;
+    using System.Data.Entity;
 
-    using ComputerFactory.Data.Repositories;
-
-    using MongoDB.Driver;
+    using ComputerFactory.Data;
+    using ComputerFactory.Data.Importers;
+    using ComputerFactory.Data.Movers;
+    using ComputerFactory.Data.Migrations;
 
     public class Startup
     {
-        // TODO: Extract this into the Data project instead of creating repositories here and use ComputerFactory.Data only
-        private const string ConnectionString = "mongodb://localhost";
-        private const string DatabaseName = "ComputerFactory";
-
         public static void Main(string[] args)
         {
-            var mongoClient = new MongoClient(ConnectionString);
-            var mongoServer = mongoClient.GetServer();
+            DbContext sqlServerDbContext = new ComputerFactorySqlDbContext();
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ComputerFactorySqlDbContext, Configuration>());
+            IComputerFactoryMongoDbContext mongoDbContext = new ComputerFactoryMongoDbContext();
 
-            var dbContext = mongoServer.GetDatabase(DatabaseName);
+            IDataImporter mongoImporter = new MongoImporter(mongoDbContext, Console.Out);
+            mongoImporter.ImportAll();
 
-            var vendorRepository = new VendorRepository(dbContext);
-            vendorRepository.Generate(Console.Out);
-
-            var ramRepository = new RamRepository(dbContext);
-            ramRepository.Generate(vendorRepository, Console.Out);
-
-            var psuRepository = new PsuRepository(dbContext);
-            psuRepository.Generate(vendorRepository, Console.Out);
-
-            var moboRepository = new MotherboardRepository(dbContext);
-            moboRepository.Generate(vendorRepository, Console.Out);
-
-            var cpuRepository = new CpuRepository(dbContext);
-            cpuRepository.Generate(vendorRepository, Console.Out);
-
-            var computersRepository = new ComputerRepository(dbContext);
-            computersRepository.Generate(cpuRepository, moboRepository, psuRepository, ramRepository, Console.Out);
+            IDataMover mongoToSqlServerMover = new MongoDbToSqlServerMover(sqlServerDbContext, mongoDbContext);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace ComputerFactory.Data.Models
+﻿namespace ComputerFactory.Models.MongoDb
 {
     using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;

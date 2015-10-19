@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6B33D7EF-5A3B-46B4-A93C-C65FAA5C25D0}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{7B5D8123-5FDD-4FFE-A104-C2EFC068B5F8}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ComputerFactory.CLI</RootNamespace>
-    <AssemblyName>ComputerFactory.CLI</AssemblyName>
+    <RootNamespace>ComputerFactory.Models</RootNamespace>
+    <AssemblyName>ComputerFactory.Models</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,27 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>..\packages\MongoDB.Bson.2.0.1\lib\net45\MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver">
-      <HintPath>..\packages\MongoDB.Driver.2.0.1\lib\net45\MongoDB.Driver.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver.Core">
-      <HintPath>..\packages\MongoDB.Driver.Core.2.0.1\lib\net45\MongoDB.Driver.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="MongoDB.Driver.Legacy">
-      <HintPath>..\packages\mongocsharpdriver.2.0.1\lib\net45\MongoDB.Driver.Legacy.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -61,22 +42,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Startup.cs" />
+    <Compile Include="MongoDb\Computer.cs" />
+    <Compile Include="MongoDb\Cpu.cs" />
+    <Compile Include="MongoDb\IMongoEntity.cs" />
+    <Compile Include="MongoDb\MongoEntity.cs" />
+    <Compile Include="MongoDb\Motherboard.cs" />
+    <Compile Include="MongoDb\Psu.cs" />
+    <Compile Include="MongoDb\Ram.cs" />
+    <Compile Include="MongoDb\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServer\Computer.cs" />
+    <Compile Include="SqlServer\Cpu.cs" />
+    <Compile Include="SqlServer\Motherboard.cs" />
+    <Compile Include="SqlServer\Psu.cs" />
+    <Compile Include="SqlServer\Ram.cs" />
+    <Compile Include="SqlServer\Sales.cs" />
+    <Compile Include="SqlServer\Vendor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ComputerFactory.Common\ComputerFactory.Common.csproj">
-      <Project>{0c9d4880-23d9-4196-be0d-8bb9b45dd9b1}</Project>
-      <Name>ComputerFactory.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ComputerFactory.Data\ComputerFactory.Data.csproj">
-      <Project>{92497388-00d5-4952-b306-41361b76cbd8}</Project>
-      <Name>ComputerFactory.Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
