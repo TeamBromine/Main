@@ -56,7 +56,7 @@
     <Compile Include="SqlServer\Motherboard.cs" />
     <Compile Include="SqlServer\Psu.cs" />
     <Compile Include="SqlServer\Ram.cs" />
-    <Compile Include="SqlServer\Sales.cs" />
+    <Compile Include="SqlServer\Sale.cs" />
     <Compile Include="SqlServer\Vendor.cs" />
   </ItemGroup>
   <ItemGroup>
