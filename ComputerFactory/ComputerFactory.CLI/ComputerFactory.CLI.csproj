@@ -77,10 +77,6 @@
       <Project>{92497388-00d5-4952-b306-41361b76cbd8}</Project>
       <Name>ComputerFactory.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ComputerFactory.ExcelLoader\ComputerFactory.ExcelLoader.csproj">
-      <Project>{0aa1fc85-508e-439a-957f-42c6664a2ec7}</Project>
-      <Name>ComputerFactory.ExcelLoader</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

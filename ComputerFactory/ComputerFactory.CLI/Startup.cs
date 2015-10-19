@@ -9,7 +9,7 @@
     using ComputerFactory.Data.Importers;
     using ComputerFactory.Data.Movers;
     using ComputerFactory.Data.Migrations;
-    using ComputerFactory.ExcelLoader;
+    using ComputerFactory.Data.ExcelLoader;
     
     public class Startup
     {

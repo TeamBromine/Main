@@ -1,4 +1,4 @@
-﻿namespace ComputerFactory.ExcelLoader
+﻿namespace ComputerFactory.Data.ExcelLoader
 {
     public class ExcelReportsTraverser
     {

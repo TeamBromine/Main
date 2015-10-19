@@ -51,6 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +61,9 @@
   <ItemGroup>
     <Compile Include="ComputerFactoryMongoDbContext.cs" />
     <Compile Include="ComputerFactorySqlDbContext.cs" />
+    <Compile Include="ExcelExporter\ExcelComputersParser.cs" />
+    <Compile Include="ExcelExporter\ExcelReportsTraverser.cs" />
+    <Compile Include="ExcelExporter\ReportsUnzipper.cs" />
     <Compile Include="IComputerFactoryMongoDbContext.cs" />
     <Compile Include="Importers\IDataImporter.cs" />
     <Compile Include="Importers\MongoImporter.cs" />

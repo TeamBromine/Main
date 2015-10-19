@@ -1,4 +1,4 @@
-﻿namespace ComputerFactory.ExcelLoader
+﻿namespace ComputerFactory.Data.ExcelLoader
 {
     using ComputerFactory.Models.SqlServer;
     using System;
