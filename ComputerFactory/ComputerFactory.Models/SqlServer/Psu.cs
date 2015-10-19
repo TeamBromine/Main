@@ -1,6 +1,7 @@
 ﻿namespace ComputerFactory.Models.SqlServer
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class Psu
     {
@@ -13,6 +14,7 @@
 
         public int Id { get; set; }
 
+        [MaxLength(30)]
         public string Model { get; set; }
 
         public int VendorId { get; set; }

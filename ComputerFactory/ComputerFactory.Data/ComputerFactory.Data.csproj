@@ -67,6 +67,13 @@
     <Compile Include="IComputerFactoryMongoDbContext.cs" />
     <Compile Include="Importers\IDataImporter.cs" />
     <Compile Include="Importers\MongoImporter.cs" />
+    <Compile Include="LoadDataFromXml\DataImporters\IDataImporter.cs" />
+    <Compile Include="LoadDataFromXml\DataImporters\XmlToMongoDbDataImporter.cs" />
+    <Compile Include="LoadDataFromXml\DataImporters\XmlToMSSQLDataImporter.cs" />
+    <Compile Include="LoadDataFromXml\Models\Computer.cs" />
+    <Compile Include="LoadDataFromXml\Models\Sale.cs" />
+    <Compile Include="LoadDataFromXml\XmlDataLoader.cs" />
+    <Compile Include="LoadDataFromXml\XmlDataReader.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Movers\IDataMover.cs" />
     <Compile Include="Movers\MongoDbToSqlServerMover.cs" />
