@@ -11,6 +11,7 @@
     using ComputerFactory.Data.Migrations;
     using ComputerFactory.Data.ExcelLoader;
     using Data.LoadDataFromXml;
+    using Data.PdfReportGenerator;
 
     public class Startup
     {
@@ -26,6 +27,9 @@
 
             IDataMover mongoToSqlServerMover = new MongoDbToSqlServerMover(sqlServerDbContext, mongoDbContext);
 
+            //Generate pdf report
+            PdfReportGenerator.GeneratePdfReport();
+            
             // Load from xml file into mongoDb and mssql
             XmlDataLoader.Load();
 

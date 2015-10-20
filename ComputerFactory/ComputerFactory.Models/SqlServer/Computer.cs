@@ -10,6 +10,10 @@ namespace ComputerFactory.Models.SqlServer
             this.Price = price;
         }
 
+        public Computer()
+        {
+        }
+
         public int Id { get; set; }
 
         [MaxLength(30)]
