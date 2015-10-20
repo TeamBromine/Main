@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sales-by-month>
+	<Sale Month="Sep-2015">
+		<Computers>
+			<Computer Model="A1">950.00</Computer>
+		</Computers>
+		<Computers>
+			<Computer Model="A2">1050.99</Computer>
+		</Computers>
+	</Sale>
+	<Sale Month="Oct-2015">
+		<Computers>
+			<Computer Model="B1">999.99</Computer>
+		</Computers>
+		<Computers>
+			<Computer Model="B2">1120.00</Computer>
+		</Computers>
+	</Sale>
+	<Sale Month="Nov-2015">
+		<Computers>
+			<Computer Model="C1">1280.88</Computer>
+		</Computers>
+		<Computers>
+			<Computer Model="C2">1100.00</Computer>
+		</Computers>
+	</Sale>
+</sales-by-month>

@@ -1,6 +1,7 @@
 ﻿namespace ComputerFactory.Models.SqlServer
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public class Cpu
     {
@@ -13,6 +14,7 @@
 
         public int Id { get; set; }
 
+        [MaxLength(30)]
         public string Model { get; set; }
 
         public int Cores { get; set; }

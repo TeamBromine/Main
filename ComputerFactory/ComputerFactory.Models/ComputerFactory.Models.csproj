@@ -34,6 +34,7 @@
       <HintPath>..\packages\MongoDB.Bson.2.0.1\lib\net45\MongoDB.Bson.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,6 +50,7 @@
     <Compile Include="MongoDb\Motherboard.cs" />
     <Compile Include="MongoDb\Psu.cs" />
     <Compile Include="MongoDb\Ram.cs" />
+    <Compile Include="MongoDb\Sale.cs" />
     <Compile Include="MongoDb\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServer\BuildReport.cs" />

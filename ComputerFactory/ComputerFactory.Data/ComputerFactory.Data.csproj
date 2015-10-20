@@ -36,6 +36,10 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.7.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.7\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>..\packages\MongoDB.Bson.2.0.1\lib\net45\MongoDB.Bson.dll</HintPath>
     </Reference>
@@ -68,9 +72,17 @@
     <Compile Include="IComputerFactorySqlDbContext.cs" />
     <Compile Include="Importers\IDataImporter.cs" />
     <Compile Include="Importers\MongoImporter.cs" />
+    <Compile Include="LoadDataFromXml\DataImporters\IDataImporter.cs" />
+    <Compile Include="LoadDataFromXml\DataImporters\XmlToMongoDbDataImporter.cs" />
+    <Compile Include="LoadDataFromXml\DataImporters\XmlToMSSQLDataImporter.cs" />
+    <Compile Include="LoadDataFromXml\Models\Computer.cs" />
+    <Compile Include="LoadDataFromXml\Models\Sale.cs" />
+    <Compile Include="LoadDataFromXml\XmlDataLoader.cs" />
+    <Compile Include="LoadDataFromXml\XmlDataReader.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Movers\IDataMover.cs" />
     <Compile Include="Movers\MongoDbToSqlServerMover.cs" />
+    <Compile Include="PdfReportGenerator\PdfReportGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\EfRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />

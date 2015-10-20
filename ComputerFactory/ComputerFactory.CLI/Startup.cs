@@ -10,7 +10,9 @@
     using ComputerFactory.Data.Movers;
     using ComputerFactory.Data.Migrations;
     using ComputerFactory.Data.ExcelLoader;
-    
+    using Data.LoadDataFromXml;
+    using Data.PdfReportGenerator;
+
     public class Startup
     {
         public static void Main(string[] args)
@@ -24,7 +26,13 @@
             mongoImporter.ImportAll();
 
             IDataMover mongoToSqlServerMover = new MongoDbToSqlServerMover(sqlServerDbContext, mongoDbContext);
+
+            //Generate pdf report
+            PdfReportGenerator.GeneratePdfReport();
             
+            // Load from xml file into mongoDb and mssql
+            XmlDataLoader.Load();
+
             // Unzip and load excel reports
             string currentDirectory = Directory.GetCurrentDirectory();
             string dataFolderDirectory = currentDirectory + @"..\..\..\..\Data";
@@ -34,6 +42,8 @@
 
             var excelReportsTraverser = new ExcelReportsTraverser(computersBuiltReportPath);
             excelReportsTraverser.Traverse();
+
+            
         }
     }
 }
