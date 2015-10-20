@@ -24,11 +24,12 @@
 
         public void MoveAll()
         {
-            IRepository<SqlVendor> repo = new EfRepository<SqlVendor>(this.sqlServerContext);
+            IRepository<SqlVendor> repo = new EfRepository<SqlVendor>();
             repo.Add(new SqlVendor()
             {
                 Name = "Corsair"
             });
+            repo.SaveChanges();
         }
     }
 }

@@ -38,5 +38,10 @@
         {
             return table.AsQueryable<T>();
         }
+
+
+        public void SaveChanges()
+        {
+        }
     }
 }

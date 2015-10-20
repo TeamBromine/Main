@@ -5,7 +5,7 @@
 
     using ComputerFactory.Models.SqlServer;
 
-    public class ComputerFactorySqlDbContext : DbContext
+    public class ComputerFactorySqlDbContext : DbContext, IComputerFactorySqlDbContext
     {
         public ComputerFactorySqlDbContext() 
             : base("ComputerFactory")
@@ -26,6 +26,13 @@
         public virtual IDbSet<Vendor> Vendors { get; set; }
 
         public virtual IDbSet<Sale> Sales { get; set; }
+
+        public virtual IDbSet<BuildReport> BuildReports { get; set; }
+
+        public new IDbSet<TEntity> Set<TEntity>() where TEntity : class
+        {
+            return base.Set<TEntity>();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

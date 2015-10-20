@@ -5,38 +5,56 @@
     using System.Linq;
     using System.Linq.Expressions;
 
-    public class EfRepository<T> : IRepository<T> where T : class
+    public class EfRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected DbSet<T> dbSet;
+        private readonly IComputerFactorySqlDbContext data;
+        private readonly IDbSet<TEntity> set;
 
-        public EfRepository(DbContext dataContext)
+        public EfRepository()
+            : this(new ComputerFactorySqlDbContext())
         {
-            this.dbSet = dataContext.Set<T>();
+
         }
 
-        public void Add(T entity)
+        public EfRepository(IComputerFactorySqlDbContext data)
         {
-            this.dbSet.Add(entity);
+            this.data = data;
+            this.set = data.Set<TEntity>();
         }
 
-        public void Delete(T entity)
+        public void Add(TEntity entity)
         {
-            this.dbSet.Remove(entity);
+            this.UpdateState(entity, EntityState.Added);
         }
 
-        public IQueryable<T> SearchFor(Expression<Func<T, bool>> predicate)
+        public void Delete(TEntity entity)
         {
-            return this.dbSet.Where(predicate);
+            this.set.Remove(entity);
         }
 
-        public IQueryable<T> GetAll()
+        public IQueryable<TEntity> SearchFor(Expression<Func<TEntity, bool>> predicate)
         {
-            return this.dbSet.AsQueryable();
+            return this.set.Where(predicate);
         }
 
-        public T GetById(int id)
+        public IQueryable<TEntity> GetAll()
         {
-            return this.dbSet.Find(id);
+            return this.set;
+        }
+
+        public TEntity GetById(int id)
+        {
+            return this.set.Find(id);
+        }
+
+        public void SaveChanges() {
+            this.data.SaveChanges();
+        }
+
+        private void UpdateState(TEntity entity, EntityState state)
+        {
+            var trackedEntry = this.data.Entry(entity);
+            trackedEntry.State = state;
         }
     }
 }

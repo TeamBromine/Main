@@ -65,6 +65,7 @@
     <Compile Include="ExcelExporter\ExcelReportsTraverser.cs" />
     <Compile Include="ExcelExporter\ReportsUnzipper.cs" />
     <Compile Include="IComputerFactoryMongoDbContext.cs" />
+    <Compile Include="IComputerFactorySqlDbContext.cs" />
     <Compile Include="Importers\IDataImporter.cs" />
     <Compile Include="Importers\MongoImporter.cs" />
     <Compile Include="Migrations\Configuration.cs" />
